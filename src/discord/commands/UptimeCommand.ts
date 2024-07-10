@@ -3,7 +3,7 @@ import { Command } from "../types";
 import prettyMilliseconds from "pretty-ms";
 
 export const UptimeCommand: Command = {
-    metadate: new SlashCommandBuilder()
+    metadata: new SlashCommandBuilder()
         .setName("uptime")
         .setDescription("Shows how long the bot has been running.")
         .toJSON(),

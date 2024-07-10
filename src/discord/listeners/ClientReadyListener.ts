@@ -11,7 +11,7 @@ export const ClientReadyListener: Listener = {
 
         if (process.env.REGISTER_DISCORD_COMMANDS?.toLowerCase() === "true") {
             logger.info("Registering slash commands...");
-            await client.application.commands.set(commands.map(command => command.metadate));
+            await client.application.commands.set(commands.map(command => command.metadata));
         }
     },
 };

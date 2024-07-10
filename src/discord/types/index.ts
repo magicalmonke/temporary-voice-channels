@@ -7,6 +7,6 @@ export interface Listener {
 }
 
 export interface Command {
-    metadate: RESTPostAPIChatInputApplicationCommandsJSONBody;
+    metadata: RESTPostAPIChatInputApplicationCommandsJSONBody;
     execute(interaction: CommandInteraction): Promise<void>;
 }

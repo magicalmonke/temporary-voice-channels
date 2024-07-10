@@ -10,22 +10,22 @@ export const InteractionCreateListener: Listener = {
     event: Events.InteractionCreate,
     execute: async (interaction: Interaction) => {
         if (interaction.isCommand()) {
-            const command = commands.find(command => command.metadate.name === interaction.commandName);
+            const command = commands.find(command => command.metadata.name === interaction.commandName);
             if (!command) return;
 
-            if (!cooldowns.has(command.metadate.name)) {
-                cooldowns.set(command.metadate.name, new Collection());
+            if (!cooldowns.has(command.metadata.name)) {
+                cooldowns.set(command.metadata.name, new Collection());
             }
 
             const now = Date.now();
-            const timestamps = cooldowns.get(command.metadate.name);
+            const timestamps = cooldowns.get(command.metadata.name);
             const cooldownAmount = 30 * 1000; // 3 seconds
 
             if (timestamps && timestamps.has(interaction.user.id)) {
                 const expirationTime = (timestamps?.get(interaction.user.id) ?? 0) + cooldownAmount;
                 if (now < expirationTime) {
                     const timeLeft = (expirationTime - now) / 1000;
-                    interaction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.metadate.name}\` command.`, ephemeral: true });
+                    interaction.reply({ content: `Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.metadata.name}\` command.`, ephemeral: true });
                     return; // Do not execute the command
                 }
             }
