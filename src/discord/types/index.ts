@@ -8,5 +8,6 @@ export interface Listener {
 
 export interface Command {
     metadata: RESTPostAPIChatInputApplicationCommandsJSONBody;
+    cooldown?: number;
     execute(interaction: CommandInteraction): Promise<void>;
 }

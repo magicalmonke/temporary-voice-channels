@@ -19,7 +19,8 @@ export const InteractionCreateListener: Listener = {
 
             const now = Date.now();
             const timestamps = cooldowns.get(command.metadata.name);
-            const cooldownAmount = 30 * 1000; // 3 seconds
+            const defaultCooldownDuration = 3;
+            const cooldownAmount = (command.cooldown ?? defaultCooldownDuration) * 1000; // 3 seconds default
 
             if (timestamps && timestamps.has(interaction.user.id)) {
                 const expirationTime = (timestamps?.get(interaction.user.id) ?? 0) + cooldownAmount;
