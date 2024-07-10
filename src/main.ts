@@ -1,6 +1,9 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import { ClientReadyListener } from "./discord/listeners/ClientReadyListener";
+import { Logger } from "tslog";
+
+export const logger = new Logger();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
