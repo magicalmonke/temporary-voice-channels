@@ -23,10 +23,10 @@ model TemplateChannel {
   id String @id
   guildId String
   guild Guild @relation(fields: [guildId], references: [id])
-  type ChannelType
+  type TemplateChannelType
 }
 
-enum ChannelType {
+enum TemplateChannelType {
   DEFAULT
   CLONE
 }
