@@ -13,9 +13,15 @@ export const ResetCommand: Command = {
         // biome-ignore lint/style/noNonNullAssertion: DM permission is set to false
         const guild = interaction.guild!;
 
-        await prisma.guild.delete({
+        const guildRecord = await prisma.guild.findUnique({
             where: { id: guild.id }
         });
+
+        if (guildRecord) {
+            await prisma.guild.delete({
+                where: { id: guild.id }
+            });
+        }
 
         await interaction.reply({
             content: "The bot's configuration has been reset.",
