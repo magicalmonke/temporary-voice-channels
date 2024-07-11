@@ -5,8 +5,9 @@ import { UptimeCommand } from "../commands/UptimeCommand";
 import type { Listener } from "../types";
 import { SetupCommand } from "../commands/SetupCommand";
 import { ResetCommand } from "../commands/ResetCommand";
+import { VoiceCommand } from "../commands/VoiceCommand";
 
-export const commands = [UptimeCommand, SetCommand, SetupCommand, ResetCommand];
+export const commands = [UptimeCommand, SetCommand, SetupCommand, ResetCommand, VoiceCommand];
 const cooldowns: Collection<
 	string,
 	Collection<string, number>
