@@ -2,8 +2,9 @@ import { Collection, Events, Interaction } from "discord.js";
 import { Listener } from "../types";
 import { UptimeCommand } from "../commands/UptimeCommand";
 import { logger } from "../../main";
+import { SetCommand } from "../commands/SetCommand";
 
-export const commands = [UptimeCommand];
+export const commands = [UptimeCommand, SetCommand];
 const cooldowns: Collection<string, Collection<string, number>> = new Collection();
 
 export const InteractionCreateListener: Listener = {
@@ -22,7 +23,7 @@ export const InteractionCreateListener: Listener = {
             const defaultCooldownDuration = 3;
             const cooldownAmount = (command.cooldown ?? defaultCooldownDuration) * 1000; // 3 seconds default
 
-            if (timestamps && timestamps.has(interaction.user.id)) {
+            if (timestamps?.has(interaction.user.id)) {
                 const expirationTime = (timestamps?.get(interaction.user.id) ?? 0) + cooldownAmount;
                 if (now < expirationTime) {
                     const timeLeft = (expirationTime - now) / 1000;
