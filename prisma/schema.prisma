@@ -22,7 +22,7 @@ model Guild {
 model TemplateChannel {
   id String @id
   guildId String
-  guild Guild @relation(fields: [guildId], references: [id])
+  guild Guild @relation(fields: [guildId], references: [id], onDelete: Cascade)
   type TemplateChannelType
 }
 
