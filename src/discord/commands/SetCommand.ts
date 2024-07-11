@@ -5,8 +5,8 @@ import {
 	SlashCommandBuilder,
 	channelMention,
 } from "discord.js";
-import { prisma } from "../../main";
-import type { Command } from "../types";
+import { prisma } from "../../main.js";
+import type { Command } from "../types/index.js";
 
 export const SetCommand: Command = {
 	metadata: new SlashCommandBuilder()

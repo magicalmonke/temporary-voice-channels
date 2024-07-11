@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, inlineCode } from "discord.js";
 import prettyMilliseconds from "pretty-ms";
-import type { Command } from "../types";
+import type { Command } from "../types/index.js";
 
 export const UptimeCommand: Command = {
 	metadata: new SlashCommandBuilder()

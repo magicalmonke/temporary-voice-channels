@@ -1,6 +1,6 @@
 import { ChannelType, Collection, Events, inlineCode, userMention, type VoiceState } from "discord.js";
-import type { Listener } from "../types";
-import { prisma } from "../../main";
+import type { Listener } from "../types/index.js";
+import { prisma } from "../../main.js";
 import { TemplateChannelType } from "@prisma/client";
 import prettyMilliseconds from "pretty-ms";
 
@@ -51,7 +51,7 @@ export const VoiceStateUpdateListener: Listener = { // TODO: It works, but it's 
             switch (templateChannelType) {
                 case TemplateChannelType.DEFAULT: {
                     const newTemporaryChannel = await guild.channels.create({
-                        name: `${newState.member.user.username}'s Channel`,
+                        name: `${newState.member.nickname ?? newState.member.user.displayName}'s Channel`,
                         type: ChannelType.GuildVoice,
                         parent: newState.channel?.parent,
                     });

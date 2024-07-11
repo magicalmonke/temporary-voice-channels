@@ -1,11 +1,11 @@
 import { Collection, Events, type Interaction } from "discord.js";
-import { logger } from "../../main";
-import { SetCommand } from "../commands/SetCommand";
-import { UptimeCommand } from "../commands/UptimeCommand";
-import type { Listener } from "../types";
-import { SetupCommand } from "../commands/SetupCommand";
-import { ResetCommand } from "../commands/ResetCommand";
-import { VoiceCommand } from "../commands/VoiceCommand";
+import { logger } from "../../main.js";
+import { SetCommand } from "../commands/SetCommand.js";
+import { UptimeCommand } from "../commands/UptimeCommand.js";
+import type { Listener } from "../types/index.js";
+import { SetupCommand } from "../commands/SetupCommand.js";
+import { ResetCommand } from "../commands/ResetCommand.js";
+import { VoiceCommand } from "../commands/VoiceCommand.js";
 
 export const commands = [UptimeCommand, SetCommand, SetupCommand, ResetCommand, VoiceCommand];
 const cooldowns: Collection<

@@ -1,8 +1,8 @@
 import { type ChatInputCommandInteraction, SlashCommandBuilder, channelMention, inlineCode, userMention } from "discord.js";
-import type { Command } from "../types";
-import { temporaryChannels } from "../listeners/VoiceStateUpdateListener";
+import type { Command } from "../types/index.js";
+import { temporaryChannels } from "../listeners/VoiceStateUpdateListener.js";
 import { TemplateChannelType } from "@prisma/client";
-import { prisma } from "../../main";
+import { prisma } from "../../main.js";
 
 export const VoiceCommand: Command = {
 	metadata: new SlashCommandBuilder()

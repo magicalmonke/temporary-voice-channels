@@ -1,7 +1,7 @@
 import { type Client, Events } from "discord.js";
-import { logger } from "../../main";
-import type { Listener } from "../types";
-import { commands } from "./InteractionCreateListener";
+import { logger } from "../../main.js";
+import type { Listener } from "../types/index.js";
+import { commands } from "./InteractionCreateListener.js";
 
 export const ClientReadyListener: Listener = {
 	event: Events.ClientReady,

@@ -1,6 +1,6 @@
 import { type ChatInputCommandInteraction, PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
-import type { Command } from "../types";
-import { prisma } from "../../main";
+import type { Command } from "../types/index.js";
+import { prisma } from "../../main.js";
 
 export const ResetCommand: Command = {
 	metadata: new SlashCommandBuilder()

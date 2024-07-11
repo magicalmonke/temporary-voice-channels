@@ -2,9 +2,9 @@ import { Client, GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
 import { Logger } from "tslog";
-import { ClientReadyListener } from "./discord/listeners/ClientReadyListener";
-import { InteractionCreateListener } from "./discord/listeners/InteractionCreateListener";
-import { VoiceStateUpdateListener } from "./discord/listeners/VoiceStateUpdateListener";
+import { ClientReadyListener } from "./discord/listeners/ClientReadyListener.js";
+import { InteractionCreateListener } from "./discord/listeners/InteractionCreateListener.js";
+import { VoiceStateUpdateListener } from "./discord/listeners/VoiceStateUpdateListener.js";
 
 export const logger = new Logger();
 
