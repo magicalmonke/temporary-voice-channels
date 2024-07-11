@@ -1,13 +1,17 @@
-import { ClientEvents, CommandInteraction, RESTPostAPIChatInputApplicationCommandsJSONBody } from "discord.js";
+import type {
+	ClientEvents,
+	CommandInteraction,
+	RESTPostAPIChatInputApplicationCommandsJSONBody,
+} from "discord.js";
 
 export interface Listener {
-    event: keyof ClientEvents;
-    once?: boolean;
-    execute(...args: unknown[]): Promise<void> | void;
+	event: keyof ClientEvents;
+	once?: boolean;
+	execute(...args: unknown[]): Promise<void> | void;
 }
 
 export interface Command {
-    metadata: RESTPostAPIChatInputApplicationCommandsJSONBody;
-    cooldown?: number;
-    execute(interaction: CommandInteraction): Promise<void>;
+	metadata: RESTPostAPIChatInputApplicationCommandsJSONBody;
+	cooldown?: number;
+	execute(interaction: CommandInteraction): Promise<void>;
 }
