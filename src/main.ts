@@ -4,14 +4,15 @@ import { PrismaClient } from "@prisma/client";
 import { Logger } from "tslog";
 import { ClientReadyListener } from "./discord/listeners/ClientReadyListener";
 import { InteractionCreateListener } from "./discord/listeners/InteractionCreateListener";
+import { VoiceStateUpdateListener } from "./discord/listeners/VoiceStateUpdateListener";
 
 export const logger = new Logger();
 
 export const prisma = new PrismaClient();
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates] });
 
-const listeners = [ClientReadyListener, InteractionCreateListener];
+const listeners = [ClientReadyListener, InteractionCreateListener, VoiceStateUpdateListener];
 for (const listener of listeners) {
 	if (listener.once) {
 		client.once(listener.event, listener.execute);
