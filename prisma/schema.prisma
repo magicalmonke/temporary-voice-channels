@@ -12,3 +12,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Guild {
+  id String @id
+  templateChannels TemplateChannel[]
+  logChannelId String?
+}
+
+model TemplateChannel {
+  id String @id
+  guildId String
+  guild Guild @relation(fields: [guildId], references: [id])
+  type ChannelType
+}
+
+enum ChannelType {
+  DEFAULT
+  CLONE
+}
+
