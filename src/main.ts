@@ -3,8 +3,11 @@ import "dotenv/config";
 import { ClientReadyListener } from "./discord/listeners/ClientReadyListener";
 import { Logger } from "tslog";
 import { InteractionCreateListener } from "./discord/listeners/InteractionCreateListener";
+import { PrismaClient } from "@prisma/client";
 
 export const logger = new Logger();
+
+export const prisma = new PrismaClient();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
