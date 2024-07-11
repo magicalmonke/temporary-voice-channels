@@ -1,5 +1,4 @@
-import { type ChatInputCommandInteraction, SlashCommandBuilder, inlineCode } from "discord.js";
-import prettyMilliseconds from "pretty-ms";
+import { type ChatInputCommandInteraction, SlashCommandBuilder, channelMention, inlineCode, userMention } from "discord.js";
 import type { Command } from "../types";
 import { temporaryChannels } from "../listeners/VoiceStateUpdateListener";
 import { TemplateChannelType } from "@prisma/client";
@@ -129,7 +128,7 @@ export const VoiceCommand: Command = {
                 const name = interaction.options.getString("name", true);
                 await member.voice.channel?.setName(name);
 
-                logSomething(`The channel name has been changed to ${inlineCode(name)}.`);
+                logSomething(`The channel name of ${channelMention(member.voice.channelId)} has been changed to ${inlineCode(name)}.`);
 
                 await interaction.reply({
                     content: `The channel name has been changed to ${inlineCode(name)}.`,
@@ -157,7 +156,7 @@ export const VoiceCommand: Command = {
                 const limit = interaction.options.getInteger("limit", true);
                 await member.voice.channel?.setUserLimit(limit);
 
-                logSomething(`The user limit has been changed to ${inlineCode(limit.toString())}.`);
+                logSomething(`The user limit of ${channelMention(member.voice.channelId)} has been changed to ${inlineCode(limit.toString())}.`);
 
                 await interaction.reply({
                     content: `The user limit has been changed to ${inlineCode(limit.toString())}.`,
@@ -188,7 +187,7 @@ export const VoiceCommand: Command = {
                     createdAt: temporaryChannel.createdAt,
                 });
 
-                logSomething(`The channel has been claimed by ${member.toString()}.`);
+                logSomething(`${channelMention(member.voice.channelId)} has been claimed by ${userMention(member.id)}.`);
 
                 await interaction.reply({
                     content: "You have claimed the channel.",
@@ -207,7 +206,7 @@ export const VoiceCommand: Command = {
 
                 await member.voice.channel?.setNSFW(!member.voice.channel?.nsfw);
 
-                logSomething(`The NSFW status has been toggled ${member.voice.channel?.nsfw ? "off" : "on"}.`);
+                logSomething(`The NSFW status of ${channelMention(member.voice.channelId)} has been toggled ${member.voice.channel?.nsfw ? "off" : "on"}.`);
 
                 await interaction.reply({
                     content: `The NSFW status has been toggled ${member.voice.channel?.nsfw ? "off" : "on"}.`,
@@ -249,7 +248,7 @@ export const VoiceCommand: Command = {
                     createdAt: temporaryChannel.createdAt,
                 });
 
-                logSomething(`The channel has been transferred to ${newOwner.toString()}.`);
+                logSomething(`${channelMention(member.voice.channelId)} has been transferred to ${userMention(newOwner.id)} by ${userMention(member.id)}.`);
 
                 await interaction.reply({
                     content: `The channel has been transferred to ${newOwner.toString()}.`,
